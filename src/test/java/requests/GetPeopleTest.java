@@ -5,15 +5,11 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.apache.http.ParseException;
-import org.assertj.db.type.DateValue;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 import static io.restassured.RestAssured.given;
-import static java.lang.Integer.parseInt;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -55,11 +51,6 @@ public class GetPeopleTest extends CommonTest {
 
 		assertThat("R2-D2").isEqualTo(json.getString("name"));
 		assertThat("white, blue").isEqualTo(json.getString("skin_color"));
-		/*List<String> films =  new ArrayList<>(Arrays.asList(json.getString("films")));
-		System.out.println("List of String: " + films);
-		String string = String.join(",", films);
-		System.out.println("Comma separated String: " + string);
-*/
 		int s = json.getInt("films.size()");
 		System.out.println("List of String: " + s);
 		for(int i = 0; i < s; i++) {
